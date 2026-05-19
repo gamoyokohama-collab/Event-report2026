@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEAUTY COLLECTION 2026 成果報告</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1f3864;
+  --navy-light: #2e4a82;
+  --gold: #c9a227;
+  --gold-light: #e8c547;
+  --gold-pale: #fff8e1;
+  --white: #ffffff;
+  --off-white: #f8f9fb;
+  --gray: #64748b;
+  --dark: #1e293b;
+  --green: #0d6b3f;
+  --green-bg: #e8f5ee;
+  --red: #b91c1c;
+  --red-bg: #fef2f2;
+  --blue: #1e40af;
+  --blue-bg: #eff6ff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--off-white);
+  color: var(--dark);
+  line-height: 1.7;
+}
+
+/* ヘッダー */
+.hero {
+  background: var(--navy);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 24px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(201,162,39,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(201,162,39,0.08) 0%, transparent 50%);
+}
+.hero-inner {
+  position: relative;
+  text-align: center;
+  max-width: 780px;
+}
+.hero-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 7vw, 64px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.4s forwards;
+}
+.hero-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.6s forwards;
+}
+.hero-meta {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.8s forwards;
+}
+.hero-meta-item {
+  text-align: center;
+}
+.hero-meta-item .label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+.hero-meta-item .value {
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* コンテナ */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+/* セクション */
+.section {
+  margin-top: 72px;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.section-label span {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  font-weight: 500;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,162,39,0.4), transparent);
+}
+.section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 32px;
+  line-height: 1.2;
+}
+
+/* KPIカード */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.kpi-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 24px 20px;
+  border-left: 4px solid var(--navy);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.kpi-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+.kpi-card.green { border-left-color: var(--green); }
+.kpi-card.gold  { border-left-color: var(--gold); }
+.kpi-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.kpi-card.green .kpi-num { color: var(--green); }
+.kpi-card.gold  .kpi-num { color: var(--gold); }
+.kpi-label { font-size: 12px; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+.kpi-sub   { font-size: 11px; color: var(--gray); }
+
+/* 満足度バー */
+.score-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.score-item {}
+.score-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+.score-name { font-size: 13px; color: var(--dark); font-weight: 500; }
+.score-val  { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--navy); }
+.score-bar  { height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+.score-fill { height: 100%; border-radius: 4px; background: var(--navy); transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+.score-fill.green { background: var(--green); }
+.score-fill.gold  { background: var(--gold); }
+
+/* 2カラム */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+/* 評価カード */
+.eval-card {
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.eval-card.good { background: var(--green-bg); border: 1.5px solid #86efac; }
+.eval-card.bad  { background: var(--red-bg);   border: 1.5px solid #fca5a5; }
+.eval-card .ec-title {
+  font-size: 14px; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+.eval-card.good .ec-title { color: var(--green); }
+.eval-card.bad  .ec-title { color: var(--red); }
+.eval-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.eval-card ul li { font-size: 13px; color: var(--dark); padding-left: 16px; position: relative; line-height: 1.6; }
+.eval-card ul li::before { content: '・'; position: absolute; left: 0; color: var(--gray); }
+
+/* テーブル */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 8px;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.data-table th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+.data-table td {
+  padding: 11px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--dark);
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--off-white); }
+.data-table .num { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--navy); }
+.data-table .green-num { color: var(--green); }
+.data-table .red-num   { color: var(--red); }
+.data-table .th-sub { background: var(--navy-light); }
+.data-table .total { background: var(--gold-pale); font-weight: 700; }
+
+/* バーチャート */
+.bar-chart { display: flex; flex-direction: column; gap: 12px; }
+.bar-item {}
+.bar-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.bar-name  { font-size: 12px; color: var(--dark); font-weight: 500; }
+.bar-count { font-size: 12px; color: var(--gray); }
+.bar-track { height: 28px; background: #e2e8f0; border-radius: 4px; overflow: hidden; position: relative; }
+.bar-fill  { height: 100%; border-radius: 4px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+.bar-fill span { font-size: 11px; font-weight: 700; color: var(--white); }
+
+/* ハイライトボックス */
+.highlight {
+  background: var(--gold-pale);
+  border: 1.5px solid rgba(201,162,39,0.4);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: var(--dark);
+  line-height: 1.8;
+}
+.highlight strong { color: var(--navy); }
+
+/* 警告ボックス */
+.warn-box {
+  background: var(--red-bg);
+  border: 1.5px solid #fca5a5;
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: var(--dark);
+  line-height: 1.8;
+}
+.warn-box .wb-title { font-weight: 700; color: var(--red); margin-bottom: 8px; }
+
+/* 改善カード */
+.fix-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 20px; }
+.fix-card {
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.fix-card-head {
+  background: var(--navy);
+  color: var(--white);
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.fix-card-body { padding: 16px; font-size: 13px; color: var(--dark); line-height: 1.7; }
+
+/* 優先度表 */
+.priority-list { display: flex; flex-direction: column; gap: 10px; }
+.priority-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--white);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.pri-badge {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--white);
+}
+.pri-badge.high { background: var(--red); }
+.pri-badge.mid  { background: var(--gold); }
+.pri-badge.low  { background: var(--gray); }
+.pri-content {}
+.pri-title { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+.pri-desc  { font-size: 12px; color: var(--gray); line-height: 1.6; }
+
+/* cetera比較表 */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+}
+.compare-table th { background: var(--navy); color: var(--white); padding: 11px 16px; font-size: 12px; text-align: center; }
+.compare-table td { padding: 11px 16px; border-bottom: 1px solid #f1f5f9; text-align: center; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table .label-col { text-align: left; background: var(--gold-pale); font-weight: 600; }
+.compare-table .new-col { color: var(--green); font-weight: 700; }
+
+/* コスト強調 */
+.cost-block {
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 14px;
+  padding: 32px 28px;
+  margin: 32px 0;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.cost-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.cost-text { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.8; }
+.cost-text strong { color: var(--gold-light); }
+
+/* フッター */
+.footer {
+  text-align: center;
+  padding: 48px 24px 32px;
+  border-top: 1px solid rgba(201,162,39,0.2);
+  color: var(--gray);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 80px;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,162,39,0.3); border-radius: 3px; }
+
+/* 吹き出し引用 */
+.quote-list { display: flex; flex-direction: column; gap: 12px; }
+.quote-item {
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--dark);
+  line-height: 1.7;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* ステップ */
+.step-list { display: flex; flex-direction: column; gap: 0; }
+.step-item { display: flex; gap: 20px; }
+.step-left { display: flex; flex-direction: column; align-items: center; }
+.step-dot { width: 36px; height: 36px; background: var(--navy); border-radius: 50%; color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.step-dot.gold { background: var(--gold); color: var(--navy); }
+.step-line { width: 2px; flex: 1; background: #e2e8f0; margin: 4px 0; min-height: 24px; }
+.step-right { padding-bottom: 28px; flex: 1; padding-top: 6px; }
+.step-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.step-body  { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+/* 注釈 */
+.note { font-size: 11px; color: var(--gray); margin-top: 8px; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">GAMO KANAGAWA BRANCH  ✦  INTERNAL REPORT</div>
+    <h1>BEAUTY COLLECTION<br>2026 成果報告</h1>
+    <p class="hero-sub">2026年5月12日（火）パシフィコ横浜 ノース</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">アンケート回答</span>
+        <span class="value">メーカー22社 / サロン28社 / 学生533名 / 社員9名</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">作成</span>
+        <span class="value">2026年5月　運営事務局</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 1. 数字で見る規模 -->
+  <div class="section">
+    <div class="section-label"><span>OVERVIEW</span></div>
+    <h2>数字で見る規模感</h2>
+
+    <div class="cost-block">
+      <div class="cost-num">720<span style="font-size:28px">万円</span></div>
+      <div class="cost-text">
+        今回のイベントにかかった総費用です。<br>
+        会場費・スタッフ人件費・制作物・デジタルシステム・cetera企画費等を含みます。<br>
+        <strong>この投資に対して何が返ってきたのか</strong>、という視点でご覧ください。
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-num">552<span style="font-size:20px">名</span></div>
+        <div class="kpi-label">BC来場者（申込）</div>
+        <div class="kpi-sub">当日飛び込み含む</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">856<span style="font-size:20px">名</span></div>
+        <div class="kpi-label">B.DOORS学生参加</div>
+        <div class="kpi-sub">9校参加</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">70<span style="font-size:20px">社</span></div>
+        <div class="kpi-label">出展メーカー</div>
+        <div class="kpi-sub">神奈川最大規模</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num" style="color:var(--green)">4.68</div>
+        <div class="kpi-label">メーカー満足度</div>
+        <div class="kpi-sub">/5点満点　22社回答</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num" style="color:var(--green)">4.18</div>
+        <div class="kpi-label">サロン満足度</div>
+        <div class="kpi-sub">/5点満点　28社回答</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num" style="color:var(--green)">4.34</div>
+        <div class="kpi-label">学生満足度</div>
+        <div class="kpi-sub">/5点満点　533名回答</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. メーカー -->
+  <div class="section">
+    <div class="section-label"><span>MAKER SURVEY</span></div>
+    <h2>出展メーカー様アンケート（22社）</h2>
+
+    <div class="score-list">
+      <div class="score-item">
+        <div class="score-header"><span class="score-name">総合満足度</span><span class="score-val">4.68</span></div>
+        <div class="score-bar"><div class="score-fill green" style="width:0%" data-width="93.6%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-header"><span class="score-name">来場者数の期待充足度</span><span class="score-val">4.68</span></div>
+        <div class="score-bar"><div class="score-fill green" style="width:0%" data-width="93.6%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-header"><span class="score-name">搬入出オペレーション</span><span class="score-val">4.77</span></div>
+        <div class="score-bar"><div class="score-fill green" style="width:0%" data-width="95.4%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-header"><span class="score-name">弊社スタッフの対応</span><span class="score-val">4.59</span></div>
+        <div class="score-bar"><div class="score-fill green" style="width:0%" data-width="91.8%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-header"><span class="score-name">出展料・コスト納得感</span><span class="score-val">4.82</span></div>
+        <div class="score-bar"><div class="score-fill green" style="width:0%" data-width="96.4%"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-header"><span class="score-name">ターゲット層との面談</span><span class="score-val">4.23</span></div>
+        <div class="score-bar"><div class="score-fill" style="width:0%" data-width="84.6%"></div></div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      次回出展意向：<strong>22社中21社（95%）が「はい」</strong>と回答。「条件次第」が1社、「いいえ」は0社。
+    </div>
+
+    <h3 style="font-size:16px;color:var(--navy);margin:28px 0 16px;font-weight:700;">主な改善要望</h3>
+    <div class="data-table" style="font-size:13px;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr><th style="background:var(--navy);color:white;padding:11px 16px;text-align:left;">要望項目</th><th style="background:var(--navy);color:white;padding:11px 16px;text-align:left;">内容</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;font-weight:600;">ブース配置</td><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;">著名メーカーを入口付近に集中させず、奥まで均等に分散配置してほしい（複数社）</td></tr>
+          <tr><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;font-weight:600;">出展者識別</td><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;">メーカースタッフと来場者を区別できるタグ・リストバンド等の導入</td></tr>
+          <tr><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;font-weight:600;">訪問ログ共有</td><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;">ブースに来場したサロン名・担当営業名のフィードバックを希望</td></tr>
+          <tr><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;font-weight:600;">商談スペース</td><td style="padding:11px 16px;border-bottom:1px solid #f1f5f9;">具体的な商談ができる専用スペースの設置</td></tr>
+          <tr><td style="padding:11px 16px;font-weight:600;">デジタルシステム</td><td style="padding:11px 16px;">チェックインシステムを高評価。A4パウチでの操作マニュアル設置を提案</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3. サロン -->
+  <div class="section">
+    <div class="section-label"><span>SALON SURVEY</span></div>
+    <h2>出展サロン様アンケート・B.DOORS（28社）</h2>
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));">
+      <div class="kpi-card green">
+        <div class="kpi-num" style="font-size:36px;color:var(--green)">4.18</div>
+        <div class="kpi-label">総合満足度</div>
+        <div class="kpi-sub">23社（82%）が4〜5点</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num" style="font-size:36px;color:var(--green)">89%</div>
+        <div class="kpi-label">参加目的の達成</div>
+        <div class="kpi-sub">25社「はい」</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num" style="font-size:36px;color:var(--green)">82%</div>
+        <div class="kpi-label">次回参加意向</div>
+        <div class="kpi-sub">23社「ぜひ参加したい」</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-num" style="font-size:36px;color:var(--green)">89%</div>
+        <div class="kpi-label">学生とのコミュニケーション</div>
+        <div class="kpi-sub">25社「とれた」</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <strong>具体的な成果：</strong>サロン見学・アルバイト希望者を複数名獲得したサロンが多数。早いサロンは翌日すぐに来店・連絡があった。インスタグラムフォロー・LINE登録での接点確保が主な成果として報告されている。
+    </div>
+  </div>
+
+  <!-- 4. 学生 -->
+  <div class="section">
+    <div class="section-label"><span>STUDENT SURVEY</span></div>
+    <h2>学生アンケート B.DOORS（533名）</h2>
+
+    <table class="data-table" style="margin-bottom:24px;">
+      <thead>
+        <tr><th>学校名</th><th style="text-align:center;">1年</th><th style="text-align:center;">2年</th><th style="text-align:center;">3年</th><th style="text-align:center;">合計（予定比）</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>横浜fカレッジ</td><td style="text-align:center;">266</td><td style="text-align:center;">65</td><td style="text-align:center;">―</td><td style="text-align:center;">331（▲54）</td></tr>
+        <tr><td>横浜ビューティーアート専門学校</td><td style="text-align:center;">194</td><td style="text-align:center;">―</td><td style="text-align:center;">―</td><td style="text-align:center;">194（▲36）</td></tr>
+        <tr><td>鎌倉早見芸術学校</td><td style="text-align:center;">44</td><td style="text-align:center;">37</td><td style="text-align:center;">―</td><td style="text-align:center;">81（±0）</td></tr>
+        <tr><td>アイム湘南美容専門学校</td><td style="text-align:center;">22</td><td style="text-align:center;">46</td><td style="text-align:center;">―</td><td style="text-align:center;">68（±0）</td></tr>
+        <tr><td>横浜市立横浜商業高等学校別科</td><td style="text-align:center;">39</td><td style="text-align:center;">―</td><td style="text-align:center;">―</td><td style="text-align:center;">39（±0）</td></tr>
+        <tr><td>岩谷学園</td><td style="text-align:center;">33</td><td style="text-align:center;">―</td><td style="text-align:center;">―</td><td style="text-align:center;">33（±0）</td></tr>
+        <tr><td>アルファ専門学校</td><td style="text-align:center;">51</td><td style="text-align:center;">―</td><td style="text-align:center;">―</td><td style="text-align:center;">51（▲6）</td></tr>
+        <tr><td>すず学園高等専修学校</td><td style="text-align:center;">18</td><td style="text-align:center;">14</td><td style="text-align:center;">8</td><td style="text-align:center;">40（±0）</td></tr>
+        <tr><td>MDFビューティーカレッジ</td><td style="text-align:center;">14</td><td style="text-align:center;">5</td><td style="text-align:center;">―</td><td style="text-align:center;">19（▲1）</td></tr>
+        <tr class="total"><td>合　計</td><td style="text-align:center;">454（+59）</td><td style="text-align:center;">394（▲156）</td><td style="text-align:center;">8（±0）</td><td style="text-align:center;">856（▲97）</td></tr>
+      </tbody>
+    </table>
+    <p class="note">アンケート回収533名（回収率約62%）</p>
+
+    <div style="margin-top:32px;">
+      <h3 style="font-size:15px;color:var(--navy);font-weight:700;margin-bottom:16px;">サロン選びで重視するポイント（複数回答）</h3>
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">人間関係・雰囲気</span><span class="bar-count">336名（63%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--navy);transition:width 1.2s ease;" data-width="63%"><span>63%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">給与・福利厚生</span><span class="bar-count">335名（63%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--navy);transition:width 1.2s ease;transition-delay:0.1s;" data-width="63%"><span>63%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">休日数</span><span class="bar-count">238名（45%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--navy-light);transition:width 1.2s ease;transition-delay:0.2s;" data-width="45%"><span>45%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">教育カリキュラムの充実度</span><span class="bar-count">186名（35%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--navy-light);transition:width 1.2s ease;transition-delay:0.3s;" data-width="35%"><span>35%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">勤務地</span><span class="bar-count">130名（24%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--gray);transition:width 1.2s ease;transition-delay:0.4s;" data-width="24%"><span>24%</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;">
+      <h3 style="font-size:15px;color:var(--navy);font-weight:700;margin-bottom:16px;">就職先を探す際に参考にする媒体</h3>
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">SNS（Instagram・TikTok等）</span><span class="bar-count">327名（61%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--gold);transition:width 1.2s ease;" data-width="61%"><span style="color:var(--dark);">61%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">学校の先生の紹介</span><span class="bar-count">188名（35%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--gold);transition:width 1.2s ease;transition-delay:0.1s;opacity:0.7;" data-width="35%"><span style="color:var(--dark);">35%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">求人サイト</span><span class="bar-count">158名（30%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--gold);transition:width 1.2s ease;transition-delay:0.2s;opacity:0.5;" data-width="30%"><span style="color:var(--dark);">30%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">サロンの公式HP</span><span class="bar-count">148名（28%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--gold);transition:width 1.2s ease;transition-delay:0.3s;opacity:0.4;" data-width="28%"><span style="color:var(--dark);">28%</span></div></div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:10px;">→ SNSが圧倒的1位（61%）。出展サロンへのSNS強化提案の根拠として活用できるデータ。</p>
+    </div>
+
+    <div style="margin-top:28px;">
+      <h3 style="font-size:15px;color:var(--red);font-weight:700;margin-bottom:16px;">⚠️ サロン見学のハードル（複数回答）</h3>
+      <div class="bar-chart">
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">一人で行くのが不安</span><span class="bar-count">320名（60%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:var(--red);transition:width 1.2s ease;" data-width="60%"><span>60%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">服装がわからない</span><span class="bar-count">145名（27%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:#ef4444;transition:width 1.2s ease;transition-delay:0.1s;" data-width="27%"><span>27%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">予約の仕方がわからない</span><span class="bar-count">113名（21%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:#f87171;transition:width 1.2s ease;transition-delay:0.2s;" data-width="21%"><span>21%</span></div></div>
+        </div>
+        <div class="bar-item">
+          <div class="bar-header"><span class="bar-name">断りづらそう</span><span class="bar-count">92名（17%）</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:0%;background:#fca5a5;transition:width 1.2s ease;transition-delay:0.3s;" data-width="17%"><span style="color:var(--dark);">17%</span></div></div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:10px;">→「一人が不安」が最大障壁（60%）。複数来店・見学会形式の導入、翌日フォロー強化が有効。</p>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--navy);font-weight:700;margin:28px 0 14px;">学生の声（抜粋）</h3>
+    <div class="quote-list">
+      <div class="quote-item">「色々なサロンの雰囲気や人柄を知れてとても良かったです！」</div>
+      <div class="quote-item">「就職についてのイメージが湧いたのでよかった」</div>
+      <div class="quote-item">「話しやすくて聞きたいことが沢山聞けた」</div>
+      <div class="quote-item">「就活頑張ろうと思えた」</div>
+      <div class="quote-item">「たくさん話が聞けてよかったです！もっと見たかったです」</div>
+    </div>
+  </div>
+
+  <!-- 5. デジタルシステムの反省 -->
+  <div class="section">
+    <div class="section-label"><span>DIGITAL SYSTEM</span></div>
+    <h2>デジタルシステムの実績と反省</h2>
+
+    <div class="two-col">
+      <div class="eval-card good">
+        <div class="ec-title">✅ デジタル入場証</div>
+        <ul>
+          <li>長蛇の列が解消、スムーズな入場を実現</li>
+          <li>事前申込者・飛び込み来場者の両方に対応</li>
+          <li>メーカー各社から「良い施策」と高評価</li>
+          <li>ceteraアプリ登録促進と連動できた</li>
+        </ul>
+      </div>
+      <div class="eval-card bad">
+        <div class="ec-title">⚠️ ブース回遊ログ取得率</div>
+        <ul>
+          <li>来場者552名に対してログ取得が極めて少数</li>
+          <li>来場者の「自発的タップ」に依存した設計</li>
+          <li>システムの存在自体を知らない来場者多数</li>
+          <li>来場者・サロン双方へのアナウンスが不十分</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warn-box" style="margin-top:20px;">
+      <div class="wb-title">反省のポイント</div>
+      メーカー各社から「訪問ログをフィードバックしてほしい」という要望が複数寄せられていたにもかかわらず、今回はその期待に応えられませんでした。「誰がどのブースに来たか」というデータが取れていないことは、今後の営業活動・メーカー関係強化においても大きな機会損失です。
+    </div>
+
+    <h3 style="font-size:15px;color:var(--navy);font-weight:700;margin:24px 0 14px;">次回への改善策</h3>
+    <div class="fix-grid">
+      <div class="fix-card">
+        <div class="fix-card-head">① スタッフスキャン方式へ転換</div>
+        <div class="fix-card-body">来場者の自発タップに頼らず、ブース担当者が来場者のQRを読み取る方式へ。8月東北イベントで試験導入予定。確実な訪問ログ取得とメーカーへのフィードバックが実現できる。</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-card-head">② A4パウチの各ブース設置</div>
+        <div class="fix-card-body">マップの操作方法を各ブースに掲示。メーカー担当者からも同様の提案があり、来場者が自分でシステムにアクセスしやすくなる。</div>
+      </div>
+      <div class="fix-card">
+        <div class="fix-card-head">③ 受付時の必須アナウンス化</div>
+        <div class="fix-card-body">入場時にマップの使い方を必ず案内するフローを設ける。ガラポン抽選との連動でマップ利用へのインセンティブを付与する。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. cetera -->
+  <div class="section">
+    <div class="section-label"><span>CETERA PLAN</span></div>
+    <h2>ceteraポイント連動企画（初実施）</h2>
+
+    <table class="data-table">
+      <thead>
+        <tr><th>企画</th><th style="text-align:center;">目標</th><th style="text-align:center;">実績</th><th style="text-align:center;">達成率</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>A企画</strong>：新規登録特典（1,000pt）</td><td style="text-align:center;">100枚</td><td style="text-align:center;">40枚</td><td style="text-align:center;color:var(--red);font-weight:700;">40%</td></tr>
+        <tr><td><strong>B企画</strong>：ガラポン引換券（500pt）</td><td style="text-align:center;">100本</td><td style="text-align:center;">43本</td><td style="text-align:center;color:var(--red);font-weight:700;">43%</td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:15px;color:var(--navy);font-weight:700;margin:24px 0 14px;">A企画：当日変更の経緯</h3>
+    <table class="compare-table">
+      <thead><tr><th></th><th>当初設定</th><th>当日変更後（現在運用中）</th></tr></thead>
+      <tbody>
+        <tr><td class="label-col">利用店舗</td><td>横浜店のみ</td><td class="new-col">全店舗</td></tr>
+        <tr><td class="label-col">有効期限</td><td>当日限り</td><td class="new-col">5月31日まで</td></tr>
+        <tr><td class="label-col">周知状況</td><td>―</td><td class="new-col">cetera担当より全店舗へ伝達済み</td></tr>
+      </tbody>
+    </table>
+    <p class="note">変更の背景：「今日は行けないがぜひ伺いたい」「他店舗の方が行きやすい」等の声が当日多数寄せられたため即座に対応。</p>
+
+    <div class="highlight" style="margin-top:20px;">
+      <strong>次回改善方針：</strong>B企画は「外れが多い」との声を受け、ハズレなし設計へ転換。参加賞としてcetera引換券を全員に配布し、等級差は上乗せ方式へ変更する。景品総数も参加見込み数に合わせて増量する。
+    </div>
+  </div>
+
+  <!-- 7. メーカー特別企画 -->
+  <div class="section">
+    <div class="section-label"><span>REVENUE</span></div>
+    <h2>メーカー特別企画と収益化への取り組み</h2>
+
+    <div class="warn-box">
+      <div class="wb-title">今回最大の反省点</div>
+      催事を「開催して終わり」にしないために、出展メーカー各社に催事限定の特別企画を設けていただくようお願いしていました。しかし<strong>クロージングの仕組み・事務との連携が整備されていないまま当日を迎えてしまい</strong>、来場者の購買意欲が高まっても受注につながらなかった可能性があります。<br><br>
+      約720万円の費用をかけてお客様を集めながら、収益化の仕組みが追いついていなかった点は率直な反省として共有します。
+    </div>
+
+    <h3 style="font-size:15px;color:var(--navy);font-weight:700;margin:24px 0 14px;">次回に向けたスケジュール</h3>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-left"><div class="step-dot">3ヶ月前</div><div class="step-line"></div></div>
+        <div class="step-right"><div class="step-title">メーカーへ特別企画依頼・受注フロー設計スタート</div><div class="step-body">営業・事務・メーカーの三者で「受注から請求までの流れ」を文書化して共有する</div></div>
+      </div>
+      <div class="step-item">
+        <div class="step-left"><div class="step-dot">2ヶ月前</div><div class="step-line"></div></div>
+        <div class="step-right"><div class="step-title">特別企画内容確定・受注票様式の合意・事務オペレーション設計</div><div class="step-body">事務担当者を巻き込み、受注処理・集計・請求のオペレーションを事前に設計</div></div>
+      </div>
+      <div class="step-item">
+        <div class="step-left"><div class="step-dot">1ヶ月前</div><div class="step-line"></div></div>
+        <div class="step-right"><div class="step-title">担当サロンへ特別企画の事前案内・来場前から購買意欲を醸成</div><div class="step-body">営業担当者が担当サロンへ直接案内し、当日の商談につなげる下地を作る</div></div>
+      </div>
+      <div class="step-item">
+        <div class="step-left"><div class="step-dot gold">当日</div><div class="step-line"></div></div>
+        <div class="step-right"><div class="step-title">特別企画一覧の配布・受注票受付・来場者への案内</div><div class="step-body">来場者向け資料に特別企画を掲載。受注票をその場で受け付ける体制を整備</div></div>
+      </div>
+      <div class="step-item">
+        <div class="step-left"><div class="step-dot gold">1週間後</div><div class="step-line"></div></div>
+        <div class="step-right"><div class="step-title">担当サロンへの締切案内・未受注先へのフォロー訪問</div><div class="step-body">催事後1週間以内に営業担当から締切案内を送付。未受注先への同行訪問も実施</div></div>
+      </div>
+      <div class="step-item">
+        <div class="step-left"><div class="step-dot gold">1ヶ月後</div></div>
+        <div class="step-right"><div class="step-title">受注実績集計・収益レポート作成・次回企画への反映</div><div class="step-body">メーカー別・サロン別の受注金額を集計し催事の収益貢献度を定量評価。次回の提案資料として活用する</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. 次回提言 -->
+  <div class="section">
+    <div class="section-label"><span>NEXT STEPS</span></div>
+    <h2>次回イベントへの提言</h2>
+
+    <div class="priority-list">
+      <div class="priority-item">
+        <div class="pri-badge high">高</div>
+        <div class="pri-content">
+          <div class="pri-title">ブース訪問ログ取得率の改善</div>
+          <div class="pri-desc">スタッフスキャン方式へ転換。8月東北イベントで試験導入予定。</div>
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="pri-badge high">高</div>
+        <div class="pri-content">
+          <div class="pri-title">メーカー特別企画の収益化・事務連携</div>
+          <div class="pri-desc">企画段階から事務部門を巻き込み、受注→請求フローを事前設計する。</div>
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="pri-badge high">高</div>
+        <div class="pri-content">
+          <div class="pri-title">ブース配置の均等化</div>
+          <div class="pri-desc">人気メーカーを奥まで分散配置し、来場者の奥への回遊を促進。</div>
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="pri-badge high">高</div>
+        <div class="pri-content">
+          <div class="pri-title">出展者・来場者の識別</div>
+          <div class="pri-desc">メーカースタッフ用の識別タグ・リストバンド等を導入する。</div>
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="pri-badge mid">中</div>
+        <div class="pri-content">
+          <div class="pri-title">ガラポン設計の見直し</div>
+          <div class="pri-desc">ハズレなし設計へ転換。cetera引換券を全員への参加賞として配布。</div>
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="pri-badge mid">中</div>
+        <div class="pri-content">
+          <div class="pri-title">学生のマナー・参加姿勢の事前教育</div>
+          <div class="pri-desc">参加学校を通じた事前意識づけ・マナー指導の実施。</div>
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="pri-badge mid">中</div>
+        <div class="pri-content">
+          <div class="pri-title">アテンド体制の明確化</div>
+          <div class="pri-desc">担当業務と担当サロンアテンドの役割を明確に分離・徹底する。</div>
+        </div>
+      </div>
+      <div class="priority-item">
+        <div class="pri-badge low">低</div>
+        <div class="pri-content">
+          <div class="pri-title">来場者向け設備の充実</div>
+          <div class="pri-desc">カフェスペース・椅子増設・ゴミ箱設置。目玉コンテンツの企画検討。</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:var(--navy);border-radius:14px;padding:28px;margin-top:32px;color:white;">
+      <div style="font-size:12px;letter-spacing:3px;color:var(--gold);margin-bottom:12px;">8月 東北イベントへの展開</div>
+      <div style="font-size:15px;line-height:1.9;color:rgba(255,255,255,0.85);">
+        スタッフスキャン方式の導入・cetera設計改善・収益化フローの整備の3点を優先実装し、<strong style="color:var(--gold-light);">「催事が売上に直結する仕組み」</strong>の完成形を目指します。来年のBEAUTY COLLECTIONでは催事後の収益貢献度を数字で報告できる状態にしたいと考えています。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  BEAUTY COLLECTION 2026 成果報告<br>
+  GAMO KANAGAWA BRANCH 運営事務局　2026年5月<br>
+  <span style="color:#cbd5e1;">本資料はアンケート（メーカー22社・サロン28社・学生533名・社員9名）をもとに作成しました</span>
+</div>
+
+<script>
+// スクロールアニメーション
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // バーアニメーション
+      e.target.querySelectorAll('.score-fill[data-width]').forEach(el => {
+        setTimeout(() => el.style.width = el.dataset.width, 200);
+      });
+      e.target.querySelectorAll('.bar-fill[data-width]').forEach(el => {
+        setTimeout(() => el.style.width = el.dataset.width, 200);
+      });
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
